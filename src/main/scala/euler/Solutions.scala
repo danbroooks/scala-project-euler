@@ -23,7 +23,10 @@ object Solutions {
    */
   def evenFibonacciNumbers(n: Int): Int = {
     import euler.util.Fibonacci._
+    val FOUR_MILLION = 4000000
 
-    fibonacci(n)
+    fibonacci.takeWhile(_ < FOUR_MILLION).filter(even(_)).sum
   }
+
+  private def even(n: Int): Boolean = n % 2 == 0
 }
