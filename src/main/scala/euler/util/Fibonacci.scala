@@ -1,10 +1,9 @@
 package euler.util
 
-object Fibonacci {
-  def fibonacci(n: Int): Int = fib(n)
+import scala.annotation.tailrec
 
-  def fib(n: Int): Int = {
-    println(n)
-    if (n < 2) 1 else fib(n - 1) + fib(n - 2)
-  }
+object Fibonacci {
+  val fibonacci: Stream[Int] = 1 #:: 1 #:: fib.zip(fib.tail).map(n => n._1 + n._2)
+
+  private val fib = fibonacci
 }

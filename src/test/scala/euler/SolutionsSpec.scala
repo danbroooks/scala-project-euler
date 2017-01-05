@@ -13,7 +13,7 @@ class SolutionsSpec extends FlatSpec with Matchers {
     multiplesOfThreeAndFive(1000) should be (233168)
   }
 
-  "evenFibonacciNumbers" should "detect multiples of three and five" in {
+  "evenFibonacciNumbers" should "detect" in {
     evenFibonacciNumbers(4000000) should be (4613732)
   }
 }
