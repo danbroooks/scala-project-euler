@@ -23,10 +23,24 @@ object Solutions {
    */
   def evenFibonacciNumbers(n: Int): Int = {
     import euler.util.Fibonacci._
+    import euler.util.oddeven.even
+
     val FOUR_MILLION = 4000000
 
     fibonacci.takeWhile(_ < FOUR_MILLION).filter(even(_)).sum
   }
 
-  private def even(n: Int): Boolean = n % 2 == 0
+  /**
+   * The prime factors of 13195 are 5, 7, 13 and 29.
+   *
+   * What is the largest prime factor of the number 600851475143 ?
+   */
+  def largestPrimeFactor(n: Long): Option[Long] = {
+    import euler.util.Primes
+
+    val factors = Primes.primeFactors(n)
+
+    if (factors.isEmpty) None
+    else Some(factors.reduceLeft((x, y) => if (x > y) x else y))
+  }
 }

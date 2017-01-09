@@ -13,7 +13,15 @@ class SolutionsSpec extends FlatSpec with Matchers {
     multiplesOfThreeAndFive(1000) should be (233168)
   }
 
-  "evenFibonacciNumbers" should "detect" in {
+  "evenFibonacciNumbers" should "return the sum of all prime fib numbers up to four million" in {
     evenFibonacciNumbers(4000000) should be (4613732)
+  }
+
+  "largestPrimeFactor" should "find the largest prime factor for the number 13195" in {
+    largestPrimeFactor(13195).shouldEqual(Some(29))
+  }
+
+  "largestPrimeFactor" should "find the largest prime factor for the number 600851475143" in {
+    largestPrimeFactor(600851475143L).shouldEqual(Some(6857))
   }
 }
