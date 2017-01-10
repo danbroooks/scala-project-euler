@@ -38,10 +38,7 @@ object Solutions {
   def largestPrimeFactor(n: Long): Option[Long] = {
     import euler.util.Primes
 
-    val factors = Primes.primeFactors(n)
-
-    if (factors.isEmpty) None
-    else Some(factors.reduceLeft((x, y) => if (x > y) x else y))
+    Primes.primeFactors(n).reduceOption(_ max _)
   }
 
   /**
