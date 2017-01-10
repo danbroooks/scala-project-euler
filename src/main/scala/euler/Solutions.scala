@@ -61,12 +61,8 @@ object Solutions {
     val max = limit(digits)
     val iterator = (min to max).reverse
 
-    Some(
-      iterator.map(num => iterator
-        .map(_ * num)
-        .filter(isPalindrome)
-        .foldLeft(0)(_ max _)
-      ).foldLeft(0)(_ max _)
-    )
+    iterator.map(num => {
+      iterator.map(_ * num).filter(isPalindrome).reduceOption(_ max _)
+    }).flatten.reduceOption(_ max _)
   }
 }
