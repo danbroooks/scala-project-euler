@@ -43,4 +43,30 @@ object Solutions {
     if (factors.isEmpty) None
     else Some(factors.reduceLeft((x, y) => if (x > y) x else y))
   }
+
+  /**
+   * A palindromic number reads the same both ways. The largest palindrome made
+   * from the product of two 2-digit numbers is 9009 = 91 × 99.
+   *
+   * Find the largest palindrome made from the product of two 3-digit numbers.
+   */
+  def largestPalindromeProduct(digits: Int): Option[Int] = {
+    import scala.math.pow
+
+    def limit(n: Int): Int = pow(10, n).intValue
+
+    def isPalindrome(n: Int): Boolean = n.toString == n.toString.reverse
+
+    val min = limit(digits - 1)
+    val max = limit(digits)
+    val iterator = (min to max).reverse
+
+    Some(
+      iterator.map(num => iterator
+        .map(_ * num)
+        .filter(isPalindrome)
+        .foldLeft(0)(_ max _)
+      ).foldLeft(0)(_ max _)
+    )
+  }
 }

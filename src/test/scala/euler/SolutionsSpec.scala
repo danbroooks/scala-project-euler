@@ -24,4 +24,12 @@ class SolutionsSpec extends FlatSpec with Matchers {
   "largestPrimeFactor" should "find the largest prime factor for the number 600851475143" in {
     largestPrimeFactor(600851475143L).shouldEqual(Some(6857))
   }
+
+  "largestPalindromeProduct" should "find the largest palindrome for 2 digit numbers" in {
+    largestPalindromeProduct(2).shouldEqual(Some(9009))
+  }
+
+  "largestPalindromeProduct" should "find the largest palindrome for 3 digit numbers" in {
+    largestPalindromeProduct(3).shouldEqual(Some(906609))
+  }
 }
