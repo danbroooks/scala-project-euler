@@ -58,8 +58,8 @@ object Solutions {
     val max = limit(digits)
     val iterator = (min to max).reverse
 
-    iterator.map(num => {
+    iterator.flatMap(num => {
       iterator.map(_ * num).filter(isPalindrome).reduceOption(_ max _)
-    }).flatten.reduceOption(_ max _)
+    }).reduceOption(_ max _)
   }
 }
