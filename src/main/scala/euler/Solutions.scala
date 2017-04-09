@@ -23,11 +23,11 @@ object Solutions {
    */
   def evenFibonacciNumbers(n: Int): Int = {
     import euler.util.Fibonacci._
-    import euler.util.oddeven.even
+    import euler.util.OddEven.ops._
 
     val FOUR_MILLION = 4000000
 
-    fibonacci.takeWhile(_ < FOUR_MILLION).filter(even(_)).sum
+    fibonacci.takeWhile(_ < FOUR_MILLION).filter(_.even).sum
   }
 
   /**
