@@ -3,19 +3,17 @@ package euler.util
 import OddEven.ops._
 
 object Primes {
-  def primeFactors(n: Long): List[Long] = divisors(n).filter(x => n % x == 0 && isPrime(x))
+  def primeFactors(n: Long): List[Int] = divisors(n).filter(x => n % x == 0 && isPrime(x))
 
   private def isPrime(n: Long): Boolean = n > 1 && (n == 2 || n.odd) && divisors(n).length == 0
 
-  private def divisors(n: Long): List[Long] = {
-    def >>(i: Long, acc: List[Long] = List()): List[Long] = {
-      if (i > n / i) acc
-      else if (n % i == 0) >> (i + 1, i :: acc)
-      else >> (i + 1, acc)
-    }
+  private def divisors(n: Long): List[Int] = {
+    val d = Stream.from(2)
+      .map(_.toInt)
+      .takeWhile((i: Int) => i <= (n / i))
+      .filter(n % _ == 0)
+      .toList
 
-    val d = >> (2)
-
-    (d ++ d.reverse.map(n / _)).distinct.sorted
+    (d ++ d.reverse.map(n / _).map(_.toInt)).distinct.sorted
   }
 }

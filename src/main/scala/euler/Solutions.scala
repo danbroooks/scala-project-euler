@@ -35,7 +35,7 @@ object Solutions {
    *
    * What is the largest prime factor of the number 600851475143 ?
    */
-  def largestPrimeFactor(n: Long): Option[Long] = {
+  def largestPrimeFactor(n: Long): Option[Int] = {
     import euler.util.Primes
 
     Primes.primeFactors(n).reduceOption(_ max _)
