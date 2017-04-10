@@ -20,5 +20,4 @@ class PrimesSpec extends FlatSpec with Matchers {
   "primeFactors" should "find the prime factors for the number 13195" in {
     Primes.primeFactors(13195) should be (List(5, 7, 13, 29))
   }
-
 }
