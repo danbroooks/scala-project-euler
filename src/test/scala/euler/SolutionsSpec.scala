@@ -32,4 +32,12 @@ class SolutionsSpec extends FlatSpec with Matchers {
   "largestPalindromeProduct" should "find the largest palindrome for 3 digit numbers" in {
     largestPalindromeProduct(3).shouldEqual(Some(906609))
   }
+
+  "smallestMultiple" should "find the smallest multiple that can be divided by the numbers 1 through 10" in {
+    smallestMultiple(1 to 10) should be (2520)
+  }
+
+  "smallestMultiple" should "find the smallest multiple that can be divided by the numbers 1 through 20" in {
+    smallestMultiple(1 to 20) should be (232792560)
+  }
 }

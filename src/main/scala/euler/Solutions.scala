@@ -62,4 +62,35 @@ object Solutions {
       iterator.map(_ * num).filter(isPalindrome).reduceOption(_ max _)
     }).reduceOption(_ max _)
   }
+
+  /**
+   * 2520 is the smallest number that can be divided by each of the numbers from
+   * 1 to 10 without any remainder.
+   *
+   * What is the smallest positive number that is evenly divisible by all of the
+   * numbers from 1 to 20?
+   */
+  def smallestMultiple(numbers: Range): Int = {
+    import euler.util.IsPrime.ops._
+
+    if (numbers.last < 2) 1
+    else {
+      val inc = numbers.filter(_.isPrime).reduce(_ * _)
+      val rec = smallestMultiple(1 to numbers.last - 1)
+      var i = ((rec.toDouble / inc).floor * inc).toLong
+      var smallest: Option[Long] = None
+
+      while (smallest.isEmpty) {
+        val multiple = numbers.forall(i % _ == 0)
+
+        if (multiple && i != 0) {
+          smallest = Some(i)
+        }
+
+        i = i + inc
+      }
+
+      return smallest.get.toInt
+    }
+  }
 }
