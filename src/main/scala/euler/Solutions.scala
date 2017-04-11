@@ -73,12 +73,13 @@ object Solutions {
   def smallestMultiple(upto: Int): Int = {
     import euler.util.IsPrime.ops._
 
+    lazy val recur = smallestMultiple(upto - 1)
+
     if (upto < 2) 1
     else {
       val numbers = 1 to upto
       val inc = numbers.filter(_.isPrime).reduce(_ * _)
-      val rec = smallestMultiple(upto - 1)
-      val start = ((rec.toDouble / inc).floor * inc).toInt
+      val start = ((recur.toDouble / inc).floor * inc).toInt
 
       return Stream.iterate(start)(_ + inc)
         .filter(_ != 0)
