@@ -77,20 +77,12 @@ object Solutions {
     else {
       val inc = numbers.filter(_.isPrime).reduce(_ * _)
       val rec = smallestMultiple(1 to numbers.last - 1)
-      var i = ((rec.toDouble / inc).floor * inc).toLong
-      var smallest: Option[Long] = None
+      val start = ((rec.toDouble / inc).floor * inc).toInt
 
-      while (smallest.isEmpty) {
-        val multiple = numbers.forall(i % _ == 0)
-
-        if (multiple && i != 0) {
-          smallest = Some(i)
-        }
-
-        i = i + inc
-      }
-
-      return smallest.get.toInt
+      return Stream.iterate(start)(_ + inc)
+        .filter(_ != 0)
+        .filter(i => numbers.forall(i % _ == 0))
+        .head
     }
   }
 }
