@@ -34,10 +34,10 @@ class SolutionsSpec extends FlatSpec with Matchers {
   }
 
   "smallestMultiple" should "find the smallest multiple that can be divided by the numbers 1 through 10" in {
-    smallestMultiple(1 to 10) should be (2520)
+    smallestMultiple(10) should be (2520)
   }
 
   "smallestMultiple" should "find the smallest multiple that can be divided by the numbers 1 through 20" in {
-    smallestMultiple(1 to 20) should be (232792560)
+    smallestMultiple(20) should be (232792560)
   }
 }

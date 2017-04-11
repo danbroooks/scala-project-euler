@@ -70,13 +70,14 @@ object Solutions {
    * What is the smallest positive number that is evenly divisible by all of the
    * numbers from 1 to 20?
    */
-  def smallestMultiple(numbers: Range): Int = {
+  def smallestMultiple(upto: Int): Int = {
     import euler.util.IsPrime.ops._
 
-    if (numbers.last < 2) 1
+    if (upto < 2) 1
     else {
+      val numbers = 1 to upto
       val inc = numbers.filter(_.isPrime).reduce(_ * _)
-      val rec = smallestMultiple(1 to numbers.last - 1)
+      val rec = smallestMultiple(upto - 1)
       val start = ((rec.toDouble / inc).floor * inc).toInt
 
       return Stream.iterate(start)(_ + inc)
